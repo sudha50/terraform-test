@@ -1,18 +1,21 @@
+name: CI
+
 on:
-  push:
-    branches: main
-   
+  pull_request:
+    branches: [ main ]
+
 jobs:
-  - name: terraform Login
-    env:
-      RUN_NUMBER: test-${GITHUB_RUN_NUMBER}
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    uses: kvrhdn/tfe-run@v1.0.9
-    with:
-      token: ${{ secrets.TF_API_TOKEN }}
-      # organization: sudha-org
-      # workspace: strategic-customer-view-api_test
-      # directory: infrastructure
-      type: plan
-      wait-for-completion: true
-      tf-vars: length = "${{ github.run_number }}"
+  login:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: login
+      uses: kvrhdn/tfe-run@v1.0.9
+      with:
+        token: ${{ secrets.TF_API_TOKEN }}
+        # organization: sudha-org
+        # workspace: strategic-customer-view-api_test
+        # directory: infrastructure
+        type: plan
+        wait-for-completion: true
+        tf-vars: length = "${{ github.run_number }}"
