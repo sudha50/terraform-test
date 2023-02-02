@@ -15,7 +15,7 @@ jobs:
       uses: kvrhdn/tfe-run@v1.0.9
       with:
         token: ${{ secrets.TF_API_TOKEN }}
-        # organization: sudha-org
+        organization: sudha-org
         workspace: terraform-test
         # directory: infrastructure
         type: plan
