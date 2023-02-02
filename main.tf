@@ -7,15 +7,14 @@ terraform {
     }
   }
 }
-resource "random_id" "my_id" {
+resource "random_id" "rng" {
+  keepers = {
+    first = "${timestamp()}"
+  }     
   byte_length = var.length
 }
 
 # full object
-output "my_id" {
-    value = random_id.my_id
-}
-output "only_id" {
-   value = random_id.my_id.id
-  
+output "rng" {
+    value = random_id.rng
 }
