@@ -16,7 +16,7 @@ jobs:
       with:
         token: ${{ secrets.TF_API_TOKEN }}
         # organization: sudha-org
-        # workspace: strategic-customer-view-api_test
+        workspace: terraform-test
         # directory: infrastructure
         type: plan
         wait-for-completion: true
