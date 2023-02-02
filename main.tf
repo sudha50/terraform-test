@@ -8,7 +8,7 @@ terraform {
   }
 }
 resource "random_id" "my_id" {
-  byte_length = 8
+  byte_length = var.length
 }
 
 # full object
