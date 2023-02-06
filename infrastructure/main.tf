@@ -16,5 +16,5 @@ resource "random_id" "rng" {
 
 # full object
 output "rng" {
-    value = random_id.rng
+    value = random_id.rng.id
 }
