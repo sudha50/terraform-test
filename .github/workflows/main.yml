@@ -11,13 +11,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: login
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: terraform Login
+      env: 
+        RUN_NUMBER: test-${GITHUB_RUN_NUMBER}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       uses: kvrhdn/tfe-run@v1.0.9
       with:
         token: ${{ secrets.TF_API_TOKEN }}
         organization: sudha-org
         workspace: terraform-test
         # directory: infrastructure
-        type: plan
+        type: plan 
         wait-for-completion: true
-        tf-vars: length = "${{ github.run_number }}"
+        tf-vars: |
+          length = "${{ github.run_number }}"
+    
