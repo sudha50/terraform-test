@@ -23,7 +23,7 @@ jobs:
         organization: sudha-org
         workspace: terraform-test
         # directory: infrastructure
-        type: plan 
+        type: apply 
         wait-for-completion: true
         tf-vars: |
           length = "${{ github.run_number }}"
